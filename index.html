@@ -14,7 +14,6 @@
       padding: 0;
     }
 
-    /* ── Base: fond noir plein écran, centrage vertical ── */
     html, body {
       height: 100%;
     }
@@ -27,17 +26,22 @@
       min-height: 100vh;
       min-height: 100dvh;
       font-family: 'Inter', sans-serif;
+      padding: 20px;
     }
 
-    /* ── Carte ── */
+    /* ── Carte : 90% hauteur écran, centrée, bord noir visible ── */
     .card {
       width: 100%;
       max-width: 480px;
+      height: 90vh;
+      height: 90dvh;
+      display: flex;
+      flex-direction: column;
       border-radius: 20px;
       overflow: hidden;
       background: #1e1212;
       box-shadow:
-        0 32px 64px rgba(0, 0, 0, 0.75),
+        0 32px 64px rgba(0, 0, 0, 0.8),
         0 0 0 1px rgba(255, 255, 255, 0.06);
       opacity: 0;
       transform: translateY(24px);
@@ -48,11 +52,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Hero image ── */
+    /* ── Hero : moitié haute de la carte ── */
     .hero {
       position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3;
+      flex: 0 0 52%;
       overflow: hidden;
     }
 
@@ -76,33 +79,35 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        transparent 40%,
-        rgba(30, 12, 12, 0.5) 70%,
+        transparent 35%,
+        rgba(30, 12, 12, 0.55) 68%,
         #1e1212 100%
       );
       pointer-events: none;
     }
 
-    /* ── Contenu bas ── */
+    /* ── Contenu : moitié basse, centré verticalement ── */
     .content {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 28px 28px 36px;
-      gap: 22px;
+      padding: 24px 28px 32px;
+      gap: 20px;
     }
 
     /* ── Identité ── */
     .identity {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
       animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
     }
 
     .identity h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: clamp(1.9rem, 6vw, 2.4rem);
       font-weight: 900;
       color: #ffffff;
       line-height: 1.05;
@@ -117,21 +122,21 @@
     }
 
     .identity .tagline span {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 400;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.5);
     }
 
-    /* ── Boutons ── */
+    /* ── Boutons empilés, pleine largeur ── */
     .actions {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 10px;
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
       animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.58s forwards;
     }
 
@@ -147,7 +152,7 @@
       background: transparent;
       color: rgba(255, 255, 255, 0.85);
       font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 400;
       letter-spacing: 0.02em;
       text-decoration: none;
@@ -166,9 +171,7 @@
       transform: translateY(-1px);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
+    .btn:active { transform: translateY(0); }
 
     .btn svg {
       width: 15px;
@@ -177,36 +180,11 @@
       opacity: 0.8;
     }
 
-    /* ── Mobile : plein écran, contenu centré verticalement ── */
-    @media (max-width: 540px) {
-      body {
-        align-items: stretch;
-      }
-
-      .card {
-        border-radius: 0;
-        max-width: 100%;
-        min-height: 100vh;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        box-shadow: none;
-      }
-
-      .hero {
-        aspect-ratio: auto;
-        flex: 0 0 48%;
-      }
-
-      .content {
-        flex: 1;
-        justify-content: center;
-        padding: 28px 24px 44px;
-      }
-
-      .identity h1 {
-        font-size: 2.2rem;
-      }
+    /* ── Très petits écrans : réduire légèrement les espacements ── */
+    @media (max-height: 640px) {
+      .content { gap: 14px; padding: 16px 24px 20px; }
+      .actions { gap: 8px; }
+      .btn { padding: 10px 16px; }
     }
   </style>
 </head>
