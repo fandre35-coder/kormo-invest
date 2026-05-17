@@ -14,6 +14,7 @@
       padding: 0;
     }
 
+    /* ── Base: fond noir plein écran, centrage vertical ── */
     html, body {
       height: 100%;
     }
@@ -24,34 +25,34 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      min-height: 100dvh;
       font-family: 'Inter', sans-serif;
-      padding: 24px;
     }
 
+    /* ── Carte ── */
     .card {
       width: 100%;
-      max-width: 780px;
+      max-width: 480px;
       border-radius: 20px;
       overflow: hidden;
       background: #1e1212;
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255,255,255,0.05);
+      box-shadow:
+        0 32px 64px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
       opacity: 0;
-      transform: translateY(28px);
-      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+      transform: translateY(24px);
+      animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     }
 
     @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ── Hero image ── */
     .hero {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
     }
 
@@ -62,53 +63,46 @@
       object-position: center 30%;
       display: block;
       transform: scale(1.04);
-      animation: zoomOut 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+      animation: zoomOut 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     }
 
     @keyframes zoomOut {
       to { transform: scale(1); }
     }
 
-    /* gradient overlay bridging image → bottom section */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        transparent 35%,
-        rgba(30, 12, 12, 0.55) 65%,
+        transparent 40%,
+        rgba(30, 12, 12, 0.5) 70%,
         #1e1212 100%
       );
       pointer-events: none;
     }
 
-    /* ── Bottom content ── */
+    /* ── Contenu bas ── */
     .content {
-      padding: 28px 32px 36px;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 28px 28px 36px;
+      gap: 22px;
     }
 
+    /* ── Identité ── */
     .identity {
       opacity: 0;
-      transform: translateX(-16px);
-      animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
-    }
-
-    @keyframes slideRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      transform: translateY(12px);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
     }
 
     .identity h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-size: 2.4rem;
       font-weight: 900;
       color: #ffffff;
       line-height: 1.05;
@@ -119,62 +113,55 @@
     .identity .tagline {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
 
     .identity .tagline span {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.5);
     }
 
-    /* ── Buttons ── */
+    /* ── Boutons ── */
     .actions {
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 10px;
       opacity: 0;
-      transform: translateX(16px);
-      animation: slideLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
-      flex-shrink: 0;
-    }
-
-    @keyframes slideLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      transform: translateY(12px);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.58s forwards;
     }
 
     .btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 9px;
-      padding: 10px 20px;
-      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      width: 100%;
+      padding: 12px 20px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
       background: transparent;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(255, 255, 255, 0.85);
       font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 400;
       letter-spacing: 0.02em;
       text-decoration: none;
       cursor: pointer;
       transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        color 0.25s ease,
-        transform 0.2s ease;
-      white-space: nowrap;
+        background 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease,
+        transform 0.18s ease;
     }
 
     .btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.5);
       color: #ffffff;
       transform: translateY(-1px);
     }
@@ -187,29 +174,38 @@
       width: 15px;
       height: 15px;
       flex-shrink: 0;
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
-    /* ── Responsive: stack on narrow screens ── */
-    @media (max-width: 520px) {
-      .content {
+    /* ── Mobile : plein écran, contenu centré verticalement ── */
+    @media (max-width: 540px) {
+      body {
+        align-items: stretch;
+      }
+
+      .card {
+        border-radius: 0;
+        max-width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 22px 22px 30px;
-        gap: 20px;
-      }
-
-      .actions {
-        width: 100%;
-      }
-
-      .btn {
-        justify-content: center;
-        width: 100%;
+        box-shadow: none;
       }
 
       .hero {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: auto;
+        flex: 0 0 48%;
+      }
+
+      .content {
+        flex: 1;
+        justify-content: center;
+        padding: 28px 24px 44px;
+      }
+
+      .identity h1 {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -253,7 +249,7 @@
           WhatsApp
         </a>
 
-        <a class="btn" href="mailto:kormoinvest@gmail.com">
+        <a class="btn" href="mailto:contact+site@kormo-invest.fr">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
